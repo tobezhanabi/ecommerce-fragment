@@ -87,6 +87,7 @@ export const NavLink = styled.a`
   position: relative;
   display: flex;
   color: black;
+
   &::after {
     content: "";
     display: flex;
@@ -95,9 +96,23 @@ export const NavLink = styled.a`
     width: 0%;
   }
 
-  :hover {
-    text-decoration: underline;
-
+  &:hover {
+    color: orange;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 10px;
+  }
+`;
+export const NavLine = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: -4;
+  height: 2px;
+  width: 100%;
+  background: #ccc;
+  z-index: -10;
+  margin-top: 80px;
+  transition: background-color 0.3s ease-in-out;
+  ${NavLink}:hover + & {
     color: orange;
   }
 `;
@@ -111,7 +126,37 @@ export const Cart = styled.div`
     height: 30px;
     margin-left: 20px;
   }
+  .checkout {
+    cursor: pointer;
+  }
   @media (max-width: 375px) {
     margin-right: -60px;
+  }
+`;
+
+export const CartContainer = styled.div`
+  /* position: relative; */
+`;
+export const CartItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+`;
+export const CartQuantity = styled.div``;
+
+export const CartPopup = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  min-width: 200px;
+  display: none;
+
+  ${CartContainer}:hover & {
+    display: hover;
   }
 `;

@@ -171,6 +171,7 @@ export const Expand = styled.div`
   height: 100%;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
@@ -184,8 +185,8 @@ export const Expand = styled.div`
     margin: 0 50px;
   }
   .imaged {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -204,11 +205,13 @@ export const Expand = styled.div`
     cursor: pointer;
   }
   .left-arrow {
-    left: 450px;
+    left: 480px;
+    top: 280px;
   }
 
   .right-arrow {
-    right: 450px;
+    right: 480px;
+    top: 280px;
   }
 
   .close-button {
@@ -216,5 +219,24 @@ export const Expand = styled.div`
     top: 20px;
     right: 20px;
     cursor: pointer;
+  }
+  .thumbnail-gallery2 {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+  }
+
+  .thumbnail-gallery2 img {
+    width: 85px;
+    border-radius: 5px;
+    opacity: 0.7;
+    bottom: 0;
+    max-height: 85px;
+    margin: 20px;
+  }
+
+  .thumbnail-gallery2 img.selected {
+    opacity: 1;
+    border-color: #ff7d1a;
   }
 `;

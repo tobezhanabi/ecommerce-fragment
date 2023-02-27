@@ -6,11 +6,17 @@ import {
   MenuIcon,
   NavList,
   NavLink,
+  NavLine,
+  CartContainer,
+  CartItem,
+  CartQuantity,
+  CartPopup,
 } from "../style/Navbar.styled.jsx";
 import { NavItems } from "../data/NavItems.jsx";
 
-function Navbar() {
+function Navbar(props) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const cartItemCount = props.cartItems.length;
   return (
     <Navi>
       <div className="logoContainer">
@@ -49,10 +55,23 @@ function Navbar() {
             </NavItem>
           ))}
       </NavList>
-      <Cart>
-        <img src="../images/icon-cart.svg" alt="" />
-        <img className="avatar" src="../images/image-avatar.png" alt="" />
-      </Cart>
+      <CartContainer>
+        <Cart>
+          <img className="checkout" src="../images/icon-cart.svg" alt="" />
+          <img className="avatar" src="../images/image-avatar.png" alt="" />
+        </Cart>
+        {props.cartItems.length > 0 && (
+          <CartPopup>
+            {props.cartItems.map((item) => (
+              <CartItem>
+                {" "}
+                Sneaky piler <CartQuantity>({item.qunatity})</CartQuantity>
+              </CartItem>
+            ))}
+          </CartPopup>
+        )}
+      </CartContainer>
+      <NavLine />
     </Navi>
   );
 }

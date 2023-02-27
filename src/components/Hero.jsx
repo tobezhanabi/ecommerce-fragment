@@ -1,10 +1,11 @@
 import { Hero1, Hero2, Hero3, Add, Expand } from "../style/Hero.styled.jsx";
 import { useState } from "react";
 
-function Hero() {
+function Hero(props) {
   const [countCart, setCountCart] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
   const [expanded, setExpanded] = useState(false);
+
   // images product
   const images = [
     "../images/image-product-1.jpg",
@@ -12,12 +13,6 @@ function Hero() {
     "../images/image-product-3.jpg",
     "../images/image-product-4.jpg",
   ];
-  // function handleClick(index) {
-  //   setSelectedImage(index);
-  // }
-  // function handleClickAdd(index) {
-  //   setSelectedImage(index + 1);
-  // }
 
   // expand image
   function handleImageClick() {
@@ -57,7 +52,11 @@ function Hero() {
     }
   }
 
-  function addToCart() {}
+  //Cart hover effect
+  function addToCart(item) {
+    props.setCartItems([...props.cartItems, item]);
+  }
+
   return (
     <>
       <Hero1>
@@ -92,6 +91,17 @@ function Hero() {
               <img className="imaged" src={images[selectedImage]} alt="" />
             </div>
 
+            <div className="thumbnail-gallery2">
+              {images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`product thumbnail ${index}`}
+                  className={selectedImage === index ? "selected" : ""}
+                  onClick={() => setSelectedImage(index)}
+                />
+              ))}
+            </div>
             <div className="arrow right-arrow" onClick={nextImage}>
               <img src="../images/icon-next.svg" alt="Next mage" />
             </div>
@@ -125,7 +135,7 @@ function Hero() {
               </button>
             </div>
             <div>
-              <button className="cartButton">
+              <button className="cartButton" onClick={addToCart}>
                 <img className="cart" src="../images/icon-cart.svg" alt="" />{" "}
                 Add to Cart
               </button>
