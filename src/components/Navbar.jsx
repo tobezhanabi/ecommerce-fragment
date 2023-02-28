@@ -8,15 +8,18 @@ import {
   NavLink,
   NavLine,
   CartContainer,
-  CartItem,
-  CartQuantity,
-  CartPopup,
+  Badge,
 } from "../style/Navbar.styled.jsx";
 import { NavItems } from "../data/NavItems.jsx";
+import { Product } from "../data/ProductItem.jsx";
 
 function Navbar(props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const cartItemCount = props.cartItems.length;
+  const { title, currentPrice, image } = Product[0];
+  function CartBadge({ count }) {
+    return count > 0 ? <Badge>{count}</Badge> : null;
+  }
+  // const cartItemCount = props.cartItems.length;
   return (
     <Navi>
       <div className="logoContainer">
@@ -57,19 +60,23 @@ function Navbar(props) {
       </NavList>
       <CartContainer>
         <Cart>
-          <img className="checkout" src="../images/icon-cart.svg" alt="" />
-          <img className="avatar" src="../images/image-avatar.png" alt="" />
+          <div className="checkout">
+            <img src="../images/icon-cart.svg" alt="" />
+            <div className="checkout-content">
+              <div className="product">
+                <img className="checkout-image" src={image} alt="" />
+                <p> {title}</p>
+                <p> {currentPrice}</p>
+              </div>
+              <button> Check Out</button>
+              {props.cartItems}
+            </div>
+            <CartBadge count="4" />
+          </div>
+          <div>
+            <img className="avatar" src="../images/image-avatar.png" alt="" />
+          </div>
         </Cart>
-        {props.cartItems.length > 0 && (
-          <CartPopup>
-            {props.cartItems.map((item) => (
-              <CartItem>
-                {" "}
-                Sneaky piler <CartQuantity>({item.qunatity})</CartQuantity>
-              </CartItem>
-            ))}
-          </CartPopup>
-        )}
       </CartContainer>
       <NavLine />
     </Navi>

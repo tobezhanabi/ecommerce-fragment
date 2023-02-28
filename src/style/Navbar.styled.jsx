@@ -118,15 +118,56 @@ export const NavLine = styled.div`
 `;
 export const Cart = styled.div`
   position: absolute;
+  display: flex;
   /* margin-right: 30px; */
   right: 0;
+  justify-content: space-between;
+  margin-right: 10px;
 
   .avatar {
     width: 30px;
     height: 30px;
-    margin-left: 20px;
+    margin-left: 10px;
   }
   .checkout {
+    cursor: pointer;
+  }
+  .checkout:hover .checkout-content {
+    display: block;
+  }
+
+  .checkout-content {
+    position: absolute;
+    top: 1;
+    right: calc(100% + 10px);
+    width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1;
+    padding: 20px;
+  }
+  .checkout-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+  .product {
+    display: flex;
+  }
+  .product p {
+    font-size: 12px;
+    margin: 5px;
+  }
+  button {
+    background-color: #ff7d1a;
+    color: white;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
     cursor: pointer;
   }
   @media (max-width: 375px) {
@@ -137,26 +178,20 @@ export const Cart = styled.div`
 export const CartContainer = styled.div`
   /* position: relative; */
 `;
-export const CartItem = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-`;
-export const CartQuantity = styled.div``;
 
-export const CartPopup = styled.div`
+export const Badge = styled.span`
   position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  min-width: 200px;
-  display: none;
-
-  ${CartContainer}:hover & {
-    display: hover;
-  }
+  top: -1px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13px;
+  height: 13px;
+  background-color: orange;
+  border-radius: 50%;
+  color: white;
+  margin-right: 30px;
+  font-size: 0.65rem;
+  font-weight: bold;
 `;
