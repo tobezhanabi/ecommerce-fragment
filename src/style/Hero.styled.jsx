@@ -47,6 +47,9 @@ export const Hero2 = styled.div`
   h4 {
     font-size: 20px;
   }
+  .pricetag {
+    display: block;
+  }
   .span {
     background-color: rgba(255, 237, 224, 0.8);
     font-size: 13px;
@@ -66,9 +69,13 @@ export const Hero2 = styled.div`
     font-size: 13px;
   }
   @media (max-width: 375px) {
-    margin-left: 0;
+    margin: 20px;
     h1 {
       font-size: 30px;
+    }
+    .pricetag {
+      display: flex;
+      justify-content: space-between;
     }
   }
 `;
@@ -107,6 +114,13 @@ export const Hero3 = styled.div`
   @media (max-width: 375px) {
     img {
       border-radius: 4px;
+    }
+    .main-image img {
+      max-width: 100%;
+    }
+    .thumbnail-gallery img {
+      max-height: 70px;
+      margin: 0 5px;
     }
   }
 `;
@@ -160,6 +174,15 @@ export const Add = styled.div`
     width: 15px;
     height: 14px;
     padding-right: 5px;
+  }
+  @media (max-width: 375px) {
+    display: block;
+    .countButton {
+      padding: 0px 15px;
+    }
+    .cartButton {
+      padding: 10px 40px;
+    }
   }
 `;
 

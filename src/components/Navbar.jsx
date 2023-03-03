@@ -7,27 +7,35 @@ import {
   NavList,
   NavLink,
   NavLine,
-  CartContainer,
   Badge,
 } from "../style/Navbar.styled.jsx";
 import { NavItems } from "../data/NavItems.jsx";
-import { Product } from "../data/ProductItem.jsx";
+import { useCart } from "react-use-cart";
 
 function Navbar(props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { title, currentPrice, image } = Product[0];
+
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    totalItems,
+    cartTotal,
+    removeItem,
+    emptyCart,
+    updateItemQuantity,
+  } = useCart();
+
   function CartBadge({ count }) {
-    return count > 0 ? <Badge>{count}</Badge> : null;
+    return count > 0 ? <Badge>{totalItems}</Badge> : null;
   }
-  // const cartItemCount = props.cartItems.length;
+
+  // function price({ cart }) {
+  //   return cart > 0 ? cartTotal : null;
+  // }
+
   return (
     <Navi>
-      <div className="logoContainer">
-        <a href="">
-          <img className="logo" src="../images/logo.svg" alt="logo" />
-        </a>
-      </div>
-
       <MenuIcon menuOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
         <img
           className="OpenMenu"
@@ -42,7 +50,11 @@ function Navbar(props) {
           menuOpen={menuOpen}
         />
       </MenuIcon>
-
+      <div className="logoContainer">
+        <a href="#home">
+          <img className="logo" src="../images/logo.svg" alt="logo" />
+        </a>
+      </div>
       <NavList menuOpen={menuOpen}>
         {NavItems &&
           NavItems.map((navItem, index) => (
@@ -58,26 +70,40 @@ function Navbar(props) {
             </NavItem>
           ))}
       </NavList>
-      <CartContainer>
-        <Cart>
-          <div className="checkout">
-            <img src="../images/icon-cart.svg" alt="" />
-            <div className="checkout-content">
-              <div className="product">
-                <img className="checkout-image" src={image} alt="" />
-                <p> {title}</p>
-                <p> {currentPrice}</p>
-              </div>
-              <button> Check Out</button>
-              {props.cartItems}
-            </div>
-            <CartBadge count="4" />
+      <Cart>
+        <div className="checkout">
+          <img src="../images/icon-cart.svg" alt="" />
+          <div className="checkout-content">
+            <h4>Cart</h4>
+
+            {items.map((item, index) => {
+              return (
+                <div className="product" key={index}>
+                  <img className="checkout-image" src={item.image} alt="" />
+                  <p> {item.name}</p>
+                  <p> {item.price}</p>
+                  <p> {item.quantity}</p>
+
+                  <img
+                    className="delete"
+                    src="../images/icon-delete.svg"
+                    alt=""
+                    onClick={() => removeItem(item.id)}
+                  />
+                </div>
+              );
+            })}
+
+            <button> Check Out</button>
           </div>
-          <div>
-            <img className="avatar" src="../images/image-avatar.png" alt="" />
-          </div>
-        </Cart>
-      </CartContainer>
+
+          <CartBadge count={totalItems} />
+        </div>
+      </Cart>
+
+      <div className="avatar">
+        <img src="../images/image-avatar.png" alt="" />
+      </div>
       <NavLine />
     </Navi>
   );

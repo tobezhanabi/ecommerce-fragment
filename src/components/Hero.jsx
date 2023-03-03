@@ -1,15 +1,22 @@
 import { Hero1, Hero2, Hero3, Add, Expand } from "../style/Hero.styled.jsx";
-import { Product } from "../data/ProductItem.jsx";
+
 import { useState } from "react";
+import { useCart } from "react-use-cart";
 
 function Hero(props) {
   const [countCart, setCountCart] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const [itemData, setItemData] = useState({});
-
-  const { title, name, desc, currentPrice, image, discount, originalPrice } =
-    Product[0];
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    totalItems,
+    cartTotal,
+    removeItem,
+    emptyCart,
+  } = useCart();
+  const { addItem, updateItemQuantity } = useCart();
 
   // images product
   const images = [
@@ -114,14 +121,16 @@ function Hero(props) {
           </Expand>
         )}
         <Hero2>
-          <h3>{title}</h3>
-          <h1>{name}</h1>
-          <p>{desc}</p>
-          <div>
-            <h4>{currentPrice}</h4>
-            <p className="span">{discount}</p>
+          <h3>{props.title}</h3>
+          <h1>{props.name}</h1>
+          <p>{props.desc}</p>
+          <div className="pricetag">
+            <div>
+              <h4>{props.price}</h4>
+              <p className="span">{props.discount}</p>
+            </div>
+            <del>{props.originalPrice}</del>
           </div>
-          <del>{originalPrice}</del>
           <Add>
             <div>
               <button className="countButton" onClick={removeCount}>
@@ -135,10 +144,7 @@ function Hero(props) {
             <div>
               <button
                 className="cartButton"
-                onClick={() => {
-                  props.addToCart(itemData, countCart);
-                  setItemData([...itemData]);
-                }}
+                onClick={() => addItem(props.item)}
               >
                 <img className="cart" src="../images/icon-cart.svg" alt="" />{" "}
                 Add to Cart

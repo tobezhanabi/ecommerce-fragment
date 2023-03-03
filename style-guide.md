@@ -12,7 +12,8 @@ The designs were created to the following widths:
 ### Primary
 
 - Orange: hsl(26, 100%, 55%)
-- Pale orange: hsl(25, 100%, 94%)
+- Pale orange: hsl
+  (25, 100%, 94%)
 
 ### Neutral
 

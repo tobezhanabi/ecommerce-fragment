@@ -8,7 +8,17 @@ export const Navi = styled.nav`
   z-index: 98;
 
   align-items: center;
-
+  .avatar {
+    right: 0;
+    margin-right: 60px;
+  }
+  .avatar img {
+    height: 45px;
+  }
+  .avatar img:hover {
+    border: 2px solid orange;
+    border-radius: 50%;
+  }
   .logo {
     height: 100%;
     width: 100%;
@@ -16,6 +26,8 @@ export const Navi = styled.nav`
   @media (max-width: 375px) {
     .logo {
       margin-left: 40px;
+      height: 20px;
+      width: 100px;
     }
   }
 `;
@@ -104,10 +116,11 @@ export const NavLink = styled.a`
 `;
 export const NavLine = styled.div`
   position: absolute;
+  display: block;
   left: 0;
   bottom: -4;
   height: 2px;
-  width: 100%;
+  width: 1000px;
   background: #ccc;
   z-index: -10;
   margin-top: 80px;
@@ -115,32 +128,33 @@ export const NavLine = styled.div`
   ${NavLink}:hover + & {
     color: orange;
   }
+  @media (max-width: 375px) {
+    display: none;
+  }
 `;
 export const Cart = styled.div`
-  position: absolute;
-  display: flex;
-  /* margin-right: 30px; */
-  right: 0;
-  justify-content: space-between;
-  margin-right: 10px;
+  margin: 0 0 0 335px;
 
-  .avatar {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-  }
   .checkout {
     cursor: pointer;
+    margin-right: 10px;
   }
   .checkout:hover .checkout-content {
     display: block;
   }
-
+  h4 {
+    margin: 10px 0px;
+  }
+  .delete {
+    width: 20px;
+    height: 20px;
+  }
   .checkout-content {
     position: absolute;
-    top: 1;
-    right: calc(100% + 10px);
-    width: 200px;
+    top: 40px;
+    right: calc(10% - 10px);
+    width: 300px;
+    height: 150px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -149,8 +163,8 @@ export const Cart = styled.div`
     padding: 20px;
   }
   .checkout-image {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 4px;
   }
   .product {
@@ -161,17 +175,23 @@ export const Cart = styled.div`
     margin: 5px;
   }
   button {
+    margin: 10px;
+    margin-left: 20px;
     background-color: #ff7d1a;
     color: white;
     border: none;
-    padding: 10px 40px;
+    padding: 10px 70px;
     border-radius: 5px;
     display: flex;
     align-items: center;
     cursor: pointer;
   }
+
+  button:hover {
+    opacity: 0.7;
+  }
   @media (max-width: 375px) {
-    margin-right: -60px;
+    margin: 0 0 0 180px;
   }
 `;
 
@@ -181,8 +201,8 @@ export const CartContainer = styled.div`
 
 export const Badge = styled.span`
   position: absolute;
-  top: -1px;
-  right: 20px;
+  top: 0px;
+  /* right: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
