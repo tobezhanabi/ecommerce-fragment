@@ -12,27 +12,21 @@ import {
 import { NavItems } from "../data/NavItems.jsx";
 import { useCart } from "react-use-cart";
 
-function Navbar(props) {
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const {
     isEmpty,
-    totalUniqueItems,
+
     items,
     totalItems,
     cartTotal,
     removeItem,
-    emptyCart,
-    updateItemQuantity,
   } = useCart();
 
   function CartBadge({ count }) {
     return count > 0 ? <Badge>{totalItems}</Badge> : null;
   }
-
-  // function price({ cart }) {
-  //   return cart > 0 ? cartTotal : null;
-  // }
 
   return (
     <Navi>
@@ -75,26 +69,39 @@ function Navbar(props) {
           <img src="../images/icon-cart.svg" alt="" />
           <div className="checkout-content">
             <h4>Cart</h4>
-
-            {items.map((item, index) => {
-              return (
-                <div className="product" key={index}>
-                  <img className="checkout-image" src={item.image} alt="" />
-                  <p> {item.name}</p>
-                  <p> {item.price}</p>
-                  <p> {item.quantity}</p>
-
-                  <img
-                    className="delete"
-                    src="../images/icon-delete.svg"
-                    alt=""
-                    onClick={() => removeItem(item.id)}
-                  />
-                </div>
-              );
-            })}
-
-            <button> Check Out</button>
+            <div className="line" />
+            {isEmpty ? (
+              <p className="empty">Your cart is empty.</p>
+            ) : (
+              <>
+                {items.map((item, index) => {
+                  return (
+                    <div className="product" key={index}>
+                      <img className="checkout-image" src={item.image} alt="" />
+                      <div>
+                        <div>
+                          <p> {item.name}</p>
+                        </div>
+                        <div>
+                          <p>
+                            {" "}
+                            ${item.price} x {item.quantity}{" "}
+                            <strong>${cartTotal}.00</strong>
+                          </p>
+                        </div>
+                      </div>
+                      <img
+                        className="delete"
+                        src="../images/icon-delete.svg"
+                        alt=""
+                        onClick={() => removeItem(item.id)}
+                      />
+                    </div>
+                  );
+                })}
+                <button> Check Out</button>
+              </>
+            )}
           </div>
 
           <CartBadge count={totalItems} />

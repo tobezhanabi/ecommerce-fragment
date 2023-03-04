@@ -7,16 +7,8 @@ function Hero(props) {
   const [countCart, setCountCart] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const {
-    isEmpty,
-    totalUniqueItems,
-    items,
-    totalItems,
-    cartTotal,
-    removeItem,
-    emptyCart,
-  } = useCart();
-  const { addItem, updateItemQuantity } = useCart();
+
+  const { addItem } = useCart();
 
   // images product
   const images = [
@@ -126,29 +118,31 @@ function Hero(props) {
           <p>{props.desc}</p>
           <div className="pricetag">
             <div>
-              <h4>{props.price}</h4>
+              <h4>${props.price}.00</h4>
               <p className="span">{props.discount}</p>
             </div>
             <del>{props.originalPrice}</del>
           </div>
           <Add>
-            <div>
-              <button className="countButton" onClick={removeCount}>
-                <img src="../images/icon-minus.svg" alt="" />
-              </button>
-              <p className="adding">{countCart}</p>
-              <button className="countButton" onClick={updateCount}>
-                <img src="../images/icon-plus.svg" alt="" />
-              </button>
-            </div>
-            <div>
-              <button
-                className="cartButton"
-                onClick={() => addItem(props.item)}
-              >
-                <img className="cart" src="../images/icon-cart.svg" alt="" />{" "}
-                Add to Cart
-              </button>
+            <div className="test">
+              <div>
+                <button className="countButton" onClick={removeCount}>
+                  <img src="../images/icon-minus.svg" alt="" />
+                </button>
+                <p className="adding">{countCart}</p>
+                <button className="countButton" onClick={updateCount}>
+                  <img src="../images/icon-plus.svg" alt="" />
+                </button>
+              </div>
+              <div>
+                <button
+                  className="cartButton"
+                  onClick={() => addItem(props.item, countCart)}
+                >
+                  <img className="cart" src="../images/icon-cart.svg" alt="" />{" "}
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </Add>
         </Hero2>

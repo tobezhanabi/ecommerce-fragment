@@ -25,7 +25,8 @@ export const Navi = styled.nav`
   }
   @media (max-width: 375px) {
     .logo {
-      margin-left: 40px;
+      margin-top: -10px;
+      margin-left: 30px;
       height: 20px;
       width: 100px;
     }
@@ -39,7 +40,7 @@ export const MenuIcon = styled.div`
   z-index: 1000;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 10px;
 
   .OpenMenu {
     opacity: ${({ menuOpen }) => (menuOpen ? 0 : 1)};
@@ -145,27 +146,37 @@ export const Cart = styled.div`
   h4 {
     margin: 10px 0px;
   }
+  .empty {
+    margin: 50px;
+    color: #686968;
+  }
   .delete {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
+    margin: 20px;
   }
   .checkout-content {
     position: absolute;
     top: 40px;
     right: calc(10% - 10px);
     width: 300px;
-    height: 150px;
+    height: 200px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 1;
-    padding: 20px;
+    padding: 15px;
   }
   .checkout-image {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 4px;
+  }
+
+  .line {
+    border: 1px solid #ccc;
+    margin: 15px 0;
   }
   .product {
     display: flex;
@@ -176,11 +187,11 @@ export const Cart = styled.div`
   }
   button {
     margin: 10px;
-    margin-left: 20px;
+    /* margin-left: 10px; */
     background-color: #ff7d1a;
     color: white;
     border: none;
-    padding: 10px 70px;
+    padding: 10px 90px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -191,7 +202,31 @@ export const Cart = styled.div`
     opacity: 0.7;
   }
   @media (max-width: 375px) {
-    margin: 0 0 0 180px;
+    margin: 0 0 0 150px;
+    .checkout {
+      margin: 10px;
+    }
+    .checkout-content {
+      position: absolute;
+      top: 50px;
+      right: calc(10% - 90px);
+      width: 350px;
+      height: 200px;
+
+      padding: 25px;
+    }
+    button {
+      margin: 20px 10px;
+
+      padding: 10px 100px;
+    }
+    .product p {
+      font-size: 13px;
+    }
+    .delete {
+      width: 15px;
+      height: 15px;
+    }
   }
 `;
 

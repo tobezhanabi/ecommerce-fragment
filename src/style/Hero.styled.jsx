@@ -26,6 +26,7 @@ export const Hero2 = styled.div`
   margin-left: 100px;
   margin-top: 0px;
   padding-bottom: 10px;
+  display: block;
 
   h3 {
     padding-bottom: 5px;
@@ -70,6 +71,7 @@ export const Hero2 = styled.div`
   }
   @media (max-width: 375px) {
     margin: 20px;
+
     h1 {
       font-size: 30px;
     }
@@ -176,12 +178,16 @@ export const Add = styled.div`
     padding-right: 5px;
   }
   @media (max-width: 375px) {
-    display: block;
+    .test {
+      display: block;
+      margin: 10px;
+    }
     .countButton {
-      padding: 0px 15px;
+      padding: 0px 50px;
     }
     .cartButton {
-      padding: 10px 40px;
+      padding: 15px 100px;
+      margin: 10px 0px;
     }
   }
 `;
@@ -261,5 +267,15 @@ export const Expand = styled.div`
   .thumbnail-gallery2 img.selected {
     opacity: 1;
     border-color: #ff7d1a;
+  }
+  @media (max-width: 375px) {
+    .thumbnail-gallery2 img {
+      width: 45px;
+
+      margin: 10px;
+    }
+    .arrow {
+      display: none;
+    }
   }
 `;

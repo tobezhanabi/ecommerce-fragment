@@ -2,8 +2,7 @@ import "./App.css";
 import { GlobalStyles } from "./Global.styled";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-// import { useState } from "react";
-import { useCart } from "react-use-cart";
+
 import { Product } from "./data/ProductItem.jsx";
 import { CartProvider } from "react-use-cart";
 
@@ -12,7 +11,7 @@ function App() {
     <>
       <CartProvider>
         <GlobalStyles />
-        <Navbar />;
+        <Navbar />
         {Product.map((item, index) => {
           return (
             <Hero
