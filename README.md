@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frontend Mentor - E-commerce product page solution
 
 This is a solution to the [E-commerce product page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
@@ -80,3 +81,6 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 - Website - [Add your name here](https://www.your-site.com)
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
 - Twitter - [@yourusername](https://www.twitter.com/yourusername)
+=======
+ecommerce page
+>>>>>>> 8559a1a283932e3b1c9c73447c51b38ac04b5d23
